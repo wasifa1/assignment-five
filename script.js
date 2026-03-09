@@ -16,4 +16,51 @@ document.getElementById("login-btn")
     }
 });
 
+// Generate labels:
+const createLabelBtn = (arr) =>{
+    const synBtn = arr.map( (el) => `<button class="border border-yellow-500 bg-yellow-50 text-orange-500 rounded-lg text-sm px-2 py-1">${el}</button>`);
+    return synBtn.join(" ");
+}
+
+// Loading all Issues:
+const loadIssues = () =>{
+    const url = "https://phi-lab-server.vercel.app/api/v1/lab/issues";
+    fetch(url)
+    .then(res => res.json())
+    .then(data => displayIssues(data.data));
+}
+const displayIssues = issues => {
+    const issueContainer = document.getElementById("issue-container");
+    issueContainer.innerHTML = "";
+    // 1.
+    issues.forEach(issue =>{
+        console.log(issue);
+        const issueCard = document.createElement("div");
+        issueCard.className = "flex flex-col rounded-xl bg-white shadow-md "
+        issueCard.innerHTML = `
+            <div class="h-full p-3 flex flex-col gap-2 border-b border-gray-200 mb-2">
+                <div class="flex justify-end"><button class="text-red-600 bg-red-100   rounded-2xl text-xl py-1 px-3">${issue.priority}</button></div>
+                <h2 class="h-full text-xl font-semibold">${issue.title}</h2>
+                <p class="text-gray-500 text-sm h-full">${issue.description}</p>
+            </div>
+            <div class = "p-3">${createLabelBtn(issue.labels)}</div>
+            <div class="flex flex-col gap-2 p-3">
+                <p class="text-gray-500 text-sm"># ${issue.id} by ${issue.author}</p>
+                <p class="text-gray-500 text-sm">${new Date(issue.createdAt).toLocaleDateString("en-US")}</p>
+            </div>
+        
+        `;
+        issueContainer.append(issueCard);
+        if(issue.status === "open"){
+            issueCard.classList.add('border-t-4','border-green-400')
+        }
+        else{
+            issueCard.classList.add('border-t-4','border-purple-400')
+        }
+        
+    
+    })
+
+}
+loadIssues();
 

@@ -23,8 +23,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap" rel="stylesheet">
     </head>
 
-<body class="bg-gray-100">
-    <section id="login-section" class="min-h-screen flex items-center justify-center " >
+<body class="bg-gray-100  mx-auto">
+    <section id="login-section" class="hidden min-h-screen flex items-center justify-center " >
         
         
         <fieldset class="fieldset bg-white shadow-md  rounded-box w-md p-4  flex flex-col gap-4 items-center">
@@ -60,8 +60,67 @@
 
     </section>
     <!-- Main Section -->
-     <section id="main-section" class="hidden">This is the main section</section>
+     <section id="main-section" class="">
+        <!-- Navbar -->
+        <header class="">
+<div class="navbar bg-base-100 shadow-sm md:px-20">
+  <div class="flex-1 flex flex-row items-center ">
+    <img src="assets/github-logo.png" class=" w-[10%] h-[20%] md:w-10 md:h-full" alt="">
+    <a class="btn btn-ghost text-sm md:text-2xl font-semibold">Github Issues Tracker</a>
+  </div>
+  <div class="flex gap-2">
+    <input type="text" placeholder="Search Issues" class="input input-bordered w-18 md:w-auto" />
+    <div class="dropdown dropdown-end">
+      <div tabindex="0" role="button" class="btn btn-primary text-xs md:text-lg">
+          + New Issue
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+        </header>
+        <!-- All Issues -->
+         <section class="px-20 mt-4">
+            <div id="issue-container" class="grid grid-cols-4 gap-4" "></div>
+
+         </section>
+         
+
+            <!-- <div class="p-3 flex flex-col gap-2 border-b border-gray-400 mb-2">
+                <div class="flex justify-end"><button class="text-red-600 bg-red-200 rounded-lg text-xl">${issue.priority}</button></div>
+                <h2 class="text-xl font-semibold">${issue.title}</h2>
+                <p class="text-gray-500 text-sm">${issue.description}</p>
+                <div></div>
+            </div>
+            <div class="flex flex-col gap-2 p-3">
+                <p class="text-gray-500 text-sm"># ${issue.id} by ${issue.author}</p>
+                <p class="text-gray-500 text-sm">${issue.createdAt}</p>
+            </div> -->
+            
+
+
+
+         </div>
+     </section>
 
     <script src="script.js"></script>
 </body>
 </html>
+
+<!-- {
+"id": 1,
+"title": "Fix navigation menu on mobile devices",
+"description": "The navigation menu doesn't collapse properly on mobile devices. Need to fix the responsive behavior.",
+"status": "open",
+"labels": [
+"bug",
+"help wanted"
+],
+"priority": "high",
+"author": "john_doe",
+"assignee": "jane_smith",
+"createdAt": "2024-01-15T10:30:00Z",
+"updatedAt": "2024-01-15T10:30:00Z"
+}, -->
