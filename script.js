@@ -35,9 +35,14 @@ const loadIssues = () =>{
 const displayIssues = issues => {
     const issueContainer = document.getElementById("issue-container") ;
     issueContainer.innerHTML = "";
+    issueNumber = document.getElementById("issue-number")
+    issueNumber.textContent = issues.length  ;
+
+
     // 1.
     issues.forEach(issue =>{
         console.log(issue);
+        // 2.
         const issueCard = document.createElement("div");
         issueCard.className = "flex flex-col rounded-xl bg-white shadow-md "
         issueCard.innerHTML = `
@@ -53,6 +58,7 @@ const displayIssues = issues => {
             </div>
         
         `;
+        // 3/
         issueContainer.append(issueCard);
         if(issue.status === "open"){
             issueCard.classList.add('border-t-4','border-green-400')

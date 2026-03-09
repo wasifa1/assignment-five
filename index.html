@@ -94,8 +94,25 @@
 
 
     <!-- All Issues -->
-    <section class="px-20 my-4">
-        <div id="issue-container" class="grid grid-cols-4 gap-4" ">
+    <section class="mx-20 my-4">
+        <!-- Issue numbers   -->
+         <div class="flex flex-row justify-between bg-white border-b border-gray-200 p-4 rounded-sm">
+            <div class="flex flex row gap-1 items-center justify-start">
+                <img class="w-auto h-[60%]" src="assets/Aperture.png" alt="">
+                <div class="flex flex-col gap-">
+                    <h3 class="text-xl font-bold "><span id="issue-number"></span> Issues</h3>
+                    <p class="text-sm text-gray-500">Track and manage your project issues</p>
+                </div>
+            </div>
+            <div class="flex flex-row gap-2 items-center">
+                <i class="fa-solid fa-circle text-sm" style="color: rgb(74, 222, 128);"></i>
+                <span>Open</span>
+                <i class="fa-solid fa-circle text-sm" style="color: rgb(192, 132, 252);"></i>
+                <span>Closed</span>
+            </div>
+         </div>
+        <!-- Issue Cards -->
+        <div id="issue-container" class="grid grid-cols-4 gap-4 p-4 bg-gray-50" ">
         </div>
 
     </section>
