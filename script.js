@@ -160,4 +160,21 @@ const displayIssueDetail = (issue) =>{
 
 loadIssues();
 
+//Searching:
+document.getElementById("search-btn")
+.addEventListener("click", ()=>{
+   const input = document.getElementById("search-input");
+   const searchValue = input.value.trim(); //trim= removes space
+//    console.log(searchValue);
+    fetch(`https://phi-lab-server.vercel.app/api/v1/lab/issues/search?q=${searchValue}`)
+    .then(res=>res.json())
+    .then(data=>{
+        
+        displayIssues(data.data);
+        
+    }  )
+     ;
+     
+
+})
 

@@ -70,12 +70,12 @@
     <a class="btn btn-ghost text-sm md:text-2xl font-semibold">Github Issues Tracker</a>
   </div>
   <div class="flex gap-2">
-    <input type="text" placeholder="Search Issues" class="input input-bordered w-18 md:w-auto" />
-    <div class="dropdown dropdown-end">
-      <div tabindex="0" role="button" class="btn btn-primary text-xs md:text-lg">
-          + New Issue
-        </div>
-      </div>
+    <input id="search-input" type="text" placeholder="Search Issues" class="input input-bordered w-18 md:w-auto" />
+    
+      <button id="search-btn" tabindex="0" class="btn btn-primary text-xs md:text-lg">
+          Search
+      </button>
+      
       
     </div>
   </div>
@@ -124,8 +124,8 @@
 <!-- <button class="btn" onclick="my_modal_5.showModal()">open modal</button> -->
 <dialog id="issue_modal" class="  modal modal-bottom sm:modal-middle"> 
     <!-- no space or - in id: use _ -->
-  <div class="modal-box ">
-    <div id="detail-container" class=" w-full flex-start  bg-white p-4 rounded-xl flex flex-col gap-4">
+  <div class="modal-box max-w-2xl md:rounded-2xl">
+    <div id="detail-container" class=" flex-start  bg-white p-4 rounded-2xl flex flex-col gap-4">
 
     </div>
     <!-- <p class="py-4">Press ESC key or click the button below to close</p> -->
