@@ -24,6 +24,7 @@
     </head>
 
 <body class="bg-gray-100  mx-auto">
+    <!-- Login Section -->
     <section id="login-section" class="hidden min-h-screen flex items-center justify-center " >
         
         
@@ -60,9 +61,9 @@
 
     </section>
     <!-- Main Section -->
-     <section id="main-section" class="">
-        <!-- Navbar -->
-        <header class="">
+<section id="main-section" class="">
+    <!-- Navbar -->
+    <header class="">
 <div class="navbar bg-base-100 shadow-sm md:px-20">
   <div class="flex-1 flex flex-row items-center ">
     <img src="assets/github-logo.png" class=" w-[10%] h-[20%] md:w-10 md:h-full" alt="">
@@ -80,30 +81,29 @@
   </div>
 </div>
 
-        </header>
-        <!-- All Issues -->
-         <section class="px-20 mt-4">
-            <div id="issue-container" class="grid grid-cols-4 gap-4" "></div>
-
-         </section>
-         
-
-            <!-- <div class="p-3 flex flex-col gap-2 border-b border-gray-400 mb-2">
-                <div class="flex justify-end"><button class="text-red-600 bg-red-200 rounded-lg text-xl">${issue.priority}</button></div>
-                <h2 class="text-xl font-semibold">${issue.title}</h2>
-                <p class="text-gray-500 text-sm">${issue.description}</p>
-                <div></div>
-            </div>
-            <div class="flex flex-col gap-2 p-3">
-                <p class="text-gray-500 text-sm"># ${issue.id} by ${issue.author}</p>
-                <p class="text-gray-500 text-sm">${issue.createdAt}</p>
-            </div> -->
-            
+    </header>
 
 
+    <!-- Category Buttons --> 
+     <section class="flex flex-row gap-2 mx-20 bg-white p-4 rounded-sm my-4">
+        <button onclick="filterIssues('all')" id="all-btn" class="btn btn-primary ">All</button>
+        <button onclick="filterIssues('open')" id="open-btn" class="btn ">Open</button>
+        <button onclick="filterIssues('closed')" id="closed-btn" class="btn">Closed</button>
 
-         </div>
      </section>
+
+
+    <!-- All Issues -->
+    <section class="px-20 my-4">
+        <div id="issue-container" class="grid grid-cols-4 gap-4" ">
+        </div>
+
+    </section>
+        
+
+
+</section> 
+    <!-- main section close -->
 
     <script src="script.js"></script>
 </body>

@@ -16,9 +16,10 @@ document.getElementById("login-btn")
     }
 });
 
+let allIssues=[];
 // Generate labels:
 const createLabelBtn = (arr) =>{
-    const synBtn = arr.map( (el) => `<button class="border border-yellow-500 bg-yellow-50 text-orange-500 rounded-lg text-sm px-2 py-1">${el}</button>`);
+    const synBtn = arr.map( (el) => `<button class="border border-yellow-500 bg-yellow-50 text-orange-500 rounded-lg text-sm px-2 py-1">${el}</button>`) ;
     return synBtn.join(" ");
 }
 
@@ -27,10 +28,12 @@ const loadIssues = () =>{
     const url = "https://phi-lab-server.vercel.app/api/v1/lab/issues";
     fetch(url)
     .then(res => res.json())
-    .then(data => displayIssues(data.data));
+    .then(data => {
+        allIssues=data.data;
+        displayIssues(allIssues)}) ;
 }
 const displayIssues = issues => {
-    const issueContainer = document.getElementById("issue-container");
+    const issueContainer = document.getElementById("issue-container") ;
     issueContainer.innerHTML = "";
     // 1.
     issues.forEach(issue =>{
@@ -45,8 +48,8 @@ const displayIssues = issues => {
             </div>
             <div class = "p-3">${createLabelBtn(issue.labels)}</div>
             <div class="flex flex-col gap-2 p-3">
-                <p class="text-gray-500 text-sm"># ${issue.id} by ${issue.author}</p>
-                <p class="text-gray-500 text-sm">${new Date(issue.createdAt).toLocaleDateString("en-US")}</p>
+                <p class="text-gray-500 text-sm " ># ${issue.id} by ${issue.author}</p>
+                <p class="text-gray-500 text-sm  " >${new Date(issue.createdAt).toLocaleDateString("en-US")} </p>
             </div>
         
         `;
@@ -60,7 +63,32 @@ const displayIssues = issues => {
         
     
     })
+    
 
+};
+//Categories
+    const filterIssues = (category) =>{
+const allBtn = document.getElementById("all-btn")
+    const openBtn = document.getElementById("open-btn");
+    const closedBtn = document.getElementById("closed-btn");
+    allBtn.classList.remove("btn-primary") ;
+    openBtn.classList.remove("btn-primary") ;
+    closedBtn.classList.remove("btn-primary") ;
+    if(category === "all"){
+        allBtn.classList.add("btn-primary") ;
+        displayIssues(allIssues);
+    }
+    if(category === "open"){
+        openBtn.classList.add("btn-primary");
+        const openIssues = allIssues.filter(issue => issue.status ==="open") ;
+        displayIssues(openIssues)
+    }
+    if(category === "closed"){
+        closedBtn.classList.add("btn-primary");
+        const closedIssues = allIssues.filter(issue => issue.status ==="closed") ;
+        displayIssues(closedIssues)
+    }
 }
 loadIssues();
+
 
