@@ -27,6 +27,7 @@ const manageSpinner = (status) => {
     if(status == true)
     {   document.getElementById("spinner").classList.remove("hidden");
     document.getElementById("issue-container").classList.add("hidden");
+    
      
     }
      else{
@@ -61,9 +62,10 @@ const displayIssues = issues => {
         issueCard.onclick = () => loadIssueDetail(issue.id);
         issueCard.innerHTML = `
             <div class="h-full p-3 flex flex-col gap-2 border-b border-gray-200 mb-2">
-                <div class="flex justify-end"><button class="text-red-600 bg-red-100   rounded-2xl text-xl py-1 px-3">${issue.priority}</button></div>
+                
+                <div class="flex justify-between"><button class="bg-gray-400 text-white text-lg px-2 py-1 rounded-sm border-none">${issue.status}</button><button class="text-red-600 bg-red-100   rounded-2xl text-xl py-1 px-3">${issue.priority}</button></div>
                 <h2 class="h-full text-xl font-semibold">${issue.title}</h2>
-                <p class="text-gray-500 text-sm h-full">${issue.description}</p>
+                <p class="text-gray-500 text-sm ">${issue.description}</p>
             </div>
             <div class = "p-3">${createLabelBtn(issue.labels)}</div>
             <div class="flex flex-col gap-2 p-3">
@@ -88,6 +90,7 @@ const displayIssues = issues => {
 };
 //Categories
     const filterIssues = (category) =>{
+        document.getElementById("search-input").value = "";//clear serach vlaue if clicked
 const allBtn = document.getElementById("all-btn")
     const openBtn = document.getElementById("open-btn");
     const closedBtn = document.getElementById("closed-btn");
@@ -134,7 +137,7 @@ const displayIssueDetail = (issue) =>{
 
         </div>
         <div >${createLabelBtn(issue.labels)}</div>
-        <p class="text-gray-500 text-xl  ">${issue.description}</p>
+        <p class="text-gray-500 text-xl ">${issue.description}</p>
         <div class = "flex flex-row justify-between bg-gray-100 rounded-md p-4">
             <div class = "flex flex-col gap-1">
                 <p class="text-gray-500 text-xl  ">Assignee:</p>
@@ -183,10 +186,26 @@ document.getElementById("search-btn")
     .then(res=>res.json())
     .then(data=>{
         
+        
         displayIssues(data.data);
+
+        
+        const allBtn = document.getElementById("all-btn")
+    const openBtn = document.getElementById("open-btn");
+    const closedBtn = document.getElementById("closed-btn");
+     allBtn.classList.add("btn-primary") ;
+     openBtn.classList.remove("btn-primary") ;
+     closedBtn.classList.remove("btn-primary") ;
+
+     
+        
         
     }  )
      ;
+     
+    //  if(filterIssues()){
+    //  input.value ="";}
+     
      
 
 })
