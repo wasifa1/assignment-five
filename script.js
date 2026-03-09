@@ -201,6 +201,11 @@ document.getElementById("search-btn")
      openBtn.classList.remove("btn-primary") ;
      closedBtn.classList.remove("btn-primary") ;
 
+    if(searchValue == ""){
+    displayIssues(allIssues);
+return;}
+    
+
      
         
         
