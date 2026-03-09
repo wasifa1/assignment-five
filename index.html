@@ -23,8 +23,44 @@
     <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap" rel="stylesheet">
     </head>
 
-<body>
-    
+<body class="bg-gray-100">
+    <section id="login-section" class="min-h-screen flex items-center justify-center " >
+        
+        
+        <fieldset class="fieldset bg-white shadow-md  rounded-box w-md p-4  flex flex-col gap-4 items-center">
+            <div class="flex flex-col items-center ">
+                <img class="w-[50%]" src="assets/github-logo.png" alt="">
+                <legend class="fieldset-legend text-center text-xl font-bold">GitHub Issues Tracker</legend>
+                <p class="text center text-sm text-gray-500">Sign in to manage your issues</p>
+            </div>
+            
+
+            <div class="flex flex-col w-[100%]">
+            <label class="label text-sm font-semibold text-black">Username</label>
+            <input id="username" type="text" class="input w-[100%]" placeholder="Enter Username" />
+            <p class="mb-2 text-xs text-[#4A00FF]">Default : admin</p>
+
+            <label class="label text-sm font-semibold text-black">Password</label>
+            <input id="password" type="password" class="input w-[100%]" placeholder="Enter Password" />
+            <p class="text-xs text-[#4A00FF]">Default : admin123</p>
+            </div>
+
+            <button id="login-btn" class="w-[100%] btn btn-primary mt-2">Sign In</button>
+            <div class="relative w-full">
+                <div class="border-t border-gray-300">
+                    <span class="absolute left-1/2 -translate-x-1/2 text-sm -top-3 bg-white px-2">OR</span>
+                </div>
+            </div>
+            <p class="text-sm text-gray-500 text center">Demo Credentials:</p>
+            <div class="flex flex-col items-center rounded-sm bg-gray-100 w-[100%] py-2">
+                <p class="text-sm"><span class="font-bold">Username:</span> admin</p>
+                <p class="text-sm"><span class="font-bold">Password:</span> admin123</p>
+            </div>
+    </fieldset>
+
+    </section>
+    <!-- Main Section -->
+     <section id="main-section" class="hidden">This is the main section</section>
 
     <script src="script.js"></script>
 </body>
