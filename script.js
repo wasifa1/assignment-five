@@ -44,7 +44,8 @@ const loadIssues = () =>{
     .then(res => res.json())
     .then(data => {
         allIssues=data.data;
-        displayIssues(allIssues)}) ;
+        displayIssues(allIssues); manageSpinner(false);
+    }) ;
 }
 const displayIssues = issues => {
     const issueContainer = document.getElementById("issue-container") ;
@@ -85,7 +86,7 @@ const displayIssues = issues => {
         
     
     })
-    manageSpinner(false);
+   
 
 };
 //Categories
@@ -179,6 +180,7 @@ loadIssues();
 //Searching:
 document.getElementById("search-btn")
 .addEventListener("click", ()=>{
+    manageSpinner(true);
    const input = document.getElementById("search-input");
    const searchValue = input.value.trim(); //trim= removes space
 //    console.log(searchValue);
@@ -187,9 +189,11 @@ document.getElementById("search-btn")
     .then(data=>{
         
         
-        displayIssues(data.data);
-
+        displayIssues(data.data)
+    
         
+
+        manageSpinner(false);
         const allBtn = document.getElementById("all-btn")
     const openBtn = document.getElementById("open-btn");
     const closedBtn = document.getElementById("closed-btn");
