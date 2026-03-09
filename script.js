@@ -22,9 +22,22 @@ const createLabelBtn = (arr) =>{
     const synBtn = arr.map( (el) => `<button class="border border-yellow-500 bg-yellow-50 text-orange-500 rounded-lg text-sm px-2 py-1">${el}</button>`) ;
     return synBtn.join(" ");
 }
+//Spinner:
+const manageSpinner = (status) => {
+    if(status == true)
+    {   document.getElementById("spinner").classList.remove("hidden");
+    document.getElementById("issue-container").classList.add("hidden");
+     
+    }
+     else{
+    document.getElementById("spinner").classList.add("hidden");
+    document.getElementById("issue-container").classList.remove("hidden");
 
+}
+}
 // Loading all Issues:
 const loadIssues = () =>{
+    manageSpinner(true);
     const url = "https://phi-lab-server.vercel.app/api/v1/lab/issues";
     fetch(url)
     .then(res => res.json())
@@ -70,7 +83,7 @@ const displayIssues = issues => {
         
     
     })
-    
+    manageSpinner(false);
 
 };
 //Categories
